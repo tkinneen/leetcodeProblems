@@ -10,8 +10,8 @@ public:
 		
 		// Loop through all input elements, adding each to map
 		for(auto i = 0; i < nums.size(); i++) {
-		
-			// find the complement to the current number that equals the target	
+
+			// Subtract the current number from the target number to find the complement value we need 		
 			int complement = target - nums[i];
 			
 			// If current value and complement add up to target, push each array element to answer vector 
@@ -20,8 +20,9 @@ public:
 				answer.push_back(i);
 				return answer;
 			}
-			
-       		valueMap[nums[i]] = i; 
+		    
+			// Add each new to the hash map for fast lookup next iteration
+			valueMap[nums[i]] = i; 
 		}
 		// if no match is found still return vector
 		return answer;

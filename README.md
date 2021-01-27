@@ -1,2 +1,2 @@
-# leetcodeChallenges
-Working my way through Leetcode programming problems in preparation for programming interviews
+# leetcodeProblems
+Working through Leetcode's programming interview problems to increase my algorithm skills. C++ and Python solutions will be added for each problem. 
