@@ -23,7 +23,6 @@ def main():
 	listTwo = listTwo.next
 	listTwo.next = ListNode(4)
 	listTwo = listTwoStart
-	listTwo = listTwoStart
 
 	# instantiate Solution class
 	s = Solution() 
