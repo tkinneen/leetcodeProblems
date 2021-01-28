@@ -26,14 +26,9 @@ def main():
 
 	# instantiate Solution class
 	s = Solution() 
-
-	answer = s.addTwoNumbers(listOne, listTwo)
 	
-	print(answer.val)
-	answer = answer.next
-	print(answer.val)
-	answer = answer.next
-	print(answer.val)
+	# Run the Solution method
+	answer = s.addTwoNumbers(listOne, listTwo)
 
 if __name__ == "__main__":
 	main()
