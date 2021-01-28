@@ -1,18 +1,34 @@
-# 1. Two Sum
-# Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-# You may assume that each input would have exactly one solution, and you may not use the same element twice.
-# You can return the answer in any order.
+# 2. Add Two Numbers
+# You are given two non-empty linked lists representing two non-negative integers. The 
+#     digits are stored in reverse order, and each of their nodes contains a single
+#     digit. Add the two numbers and return the sum as a linked list.
+# You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
+from Solution import ListNode
 from Solution import Solution
 
 def main():
 	
-	testInputs = [2,7,11,15]
-	targetValue = 9
+	# Build the linked lists with the test inputs
+	listOne = ListNode(2)
+	listOneStart = listOne
+	listOne.next = ListNode(int(4))
+	listOne = listOne.next
+	listOne.next = ListNode(int(3))
+	listOne = listOneStart # Reset the list to beginning
 
-	s = Solution() # instantiate Solution class
+	listTwo = ListNode(5)
+	listTwoStart = listTwo
+	listTwo.next = ListNode(int(6))
+	listTwo = listTwo.next
+	listTwo.next = ListNode(int(4))
+	listTwo = listTwoStart
+	listTwo = listTwoStart
 
-	answer = s.twoSum(nums, target)
+	# instantiate Solution class
+	s = Solution() 
+
+	answer = s.addTwoNumbers(listOne, listTwo)
 
 if __name__ == "__main__":
 	main()

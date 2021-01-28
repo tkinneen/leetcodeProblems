@@ -1,29 +1,48 @@
-# Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-# You may assume that each input would have exactly one solution, and you may not use the same element twice.
-# You can return the answer in any order.
+# Singly-linked list
+class ListNode:
+	def __init__(self, x):
+		self.val = x
+		self.next = None
 
 class Solution:
-	def twoSum(self, nums, target):
+    def addTwoNumbers(self, list1: ListNode, list2: ListNode) -> ListNode:
+        
+        # If either list contains a leading 0 or only has one node, return the other linked list
+        if list1.val == 0 and list1.next == None:
+            return list2
+        if list2.val == 0 and list2.next == None:
+            return list1
+        
+        list1FullNumber = ""
+        list2FullNumber = ""
+        
+        # Loop through nodes and build the string of contained numbers
+        while list1 or list2:
+            if list1 != None:
+                list1FullNumber = str(list1.val) + list1FullNumber           
+                list1 = list1.next
 
-		# A brute force solution would use nested for loops (exponential time complexity)
-		# The below solution is O(n) time complexity, achieved by using a dictionary (hash map) 
-		
-		answer = [] # Will contain index postions of numbers that add up to the target
-		previousNumbers = {} # After each loop we add each iteration to the hash map for fast lookup
+            if list2 != None:
+                list2FullNumber = str(list2.val) + list2FullNumber
+                list2 = list2.next
+        
+        # Add the two full numbers, then cast result as string for easy breakdwon into linked list
+        answer = str(int(list1FullNumber) + int(list2FullNumber))
+    
+        answerNode = ListNode(0)
+        #start = ""
+        first = False # Flag to set the start pointer
 
-		for i, num in enumerate(nums):
-		
-			# Subtract the current number from the target number to find the complement value we need	
-			complement = target - num 
-		
-			# If the current number's complement exists in the hash map, pack complement's index position and 
-			# the current index postion in the answer array	
-			if complement in hashMap:
-				answer.append(hashMap[complement])
-				answer.append(i)
-				return answer
-		
-			# Add the current number to the has map if no answer has been found yet	
-			hashMap[num] = i
-			
-		return answer
+        # Loop through the answer sum backwards and creat a linked list containing a node for each digit
+        for x in reversed(answer):
+            answerNode.next = ListNode(int(x))
+            answerNode = answerNode.next
+
+            # Set start pointer the first time through the loop
+            if first == False:
+                first = True
+                start = answerNode
+
+        answerNode = start # Reset linked list to beginning
+        
+        return answerNode
