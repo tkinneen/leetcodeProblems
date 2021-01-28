@@ -12,16 +12,16 @@ def main():
 	# Build the linked lists with the test inputs
 	listOne = ListNode(2)
 	listOneStart = listOne
-	listOne.next = ListNode(int(4))
+	listOne.next = ListNode(4)
 	listOne = listOne.next
-	listOne.next = ListNode(int(3))
+	listOne.next = ListNode(3)
 	listOne = listOneStart # Reset the list to beginning
 
 	listTwo = ListNode(5)
 	listTwoStart = listTwo
-	listTwo.next = ListNode(int(6))
+	listTwo.next = ListNode(6)
 	listTwo = listTwo.next
-	listTwo.next = ListNode(int(4))
+	listTwo.next = ListNode(4)
 	listTwo = listTwoStart
 	listTwo = listTwoStart
 
@@ -29,6 +29,12 @@ def main():
 	s = Solution() 
 
 	answer = s.addTwoNumbers(listOne, listTwo)
+	
+	print(answer.val)
+	answer = answer.next
+	print(answer.val)
+	answer = answer.next
+	print(answer.val)
 
 if __name__ == "__main__":
 	main()
