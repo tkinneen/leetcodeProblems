@@ -30,7 +30,6 @@ class Solution:
         answer = str(int(list1FullNumber) + int(list2FullNumber))
     
         answerNode = ListNode(0)
-        #start = ""
         first = False # Flag to set the start pointer
 
         # Loop through the answer sum backwards and creat a linked list containing a node for each digit
