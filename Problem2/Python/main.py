@@ -15,7 +15,7 @@ def main():
 	listOne.next = ListNode(4)
 	listOne = listOne.next
 	listOne.next = ListNode(3)
-	listOne = listOneStart # Reset the list to beginning
+	listOne = listOneStart
 
 	listTwo = ListNode(5)
 	listTwoStart = listTwo
@@ -24,7 +24,7 @@ def main():
 	listTwo.next = ListNode(4)
 	listTwo = listTwoStart
 
-	# instantiate Solution class
+	# Instantiate Solution class
 	s = Solution() 
 	
 	# Run the Solution method

@@ -6,42 +6,53 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, list1: ListNode, list2: ListNode) -> ListNode:
-        
-        # If either list contains a leading 0 or only has one node, return the other linked list
-        if list1.val == 0 and list1.next == None:
-            return list2
-        if list2.val == 0 and list2.next == None:
-            return list1
-        
-        list1FullNumber = ""
-        list2FullNumber = ""
-        
-        # Loop through nodes and build the string of contained numbers
-        while list1 or list2:
-            if list1 != None:
-                list1FullNumber = str(list1.val) + list1FullNumber           
-                list1 = list1.next
 
-            if list2 != None:
-                list2FullNumber = str(list2.val) + list2FullNumber
+        # Carry value used when node additions exceed a single digit
+        carry = 0
+        
+        # Create initial node and set head pointer
+        answerHead = answerList = ListNode(0)
+
+        # Loop through linked lists and sum values of each corresponding node
+        while list1 or list2 or carry:
+            
+            # Add carry of previous sum to current sum
+            currentSum = carry
+            
+            # If the current node exists, add the value to the current sum
+            if list1 is None:
+                currentSum += 0
+            else:
+                currentSum += list1.val
+
+            if list2 is None:
+                currentSum += 0
+            else:
+                currentSum += list2.val
+            
+            # Each node value can only hold a single digit, so if the sum exceeds 9
+            #     subtract 10 from the value and increment the carry for the next iteration
+            if currentSum > 9:
+                currentSum -= 10
+                carry = 1
+            else:
+                carry = 0
+
+            # Create a new node with the current sum as the val, then navigate to it
+            answerList.next = ListNode(currentSum)
+            answerList = answerList.next
+
+            # Move to the next node of each list if there is one
+            if list1 is None and list2 is None:
+                break
+            elif list1 is None:
                 list2 = list2.next
-        
-        # Add the two full numbers, then cast result as string for easy breakdwon into linked list
-        answer = str(int(list1FullNumber) + int(list2FullNumber))
-    
-        answerNode = ListNode(0)
-        first = False # Flag to set the start pointer
+            elif list2 is None:
+                list1 = list1.next
+            else:
+                list1 = list1.next
+                list2 = list2.next
 
-        # Loop through the answer sum backwards and creat a linked list containing a node for each digit
-        for x in reversed(answer):
-            answerNode.next = ListNode(int(x))
-            answerNode = answerNode.next
-
-            # Set start pointer the first time through the loop
-            if first == False:
-                first = True
-                start = answerNode
-
-        answerNode = start # Reset linked list to beginning
-        
-        return answerNode
+        # Reset answer list to the start pointer, then return
+        answerList = answerHead.next
+        return answerList
