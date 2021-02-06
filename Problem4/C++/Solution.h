@@ -4,7 +4,9 @@ public:
         std::cout << "test" << std::endl; 
 
         return 0;
-        /*nums1.insert( nums1.end(), nums2.begin(), nums2.end() );
+        
+		// Solution with built-in functions that doesn't satisfy O(m + n) runtime complexity
+		/*nums1.insert( nums1.end(), nums2.begin(), nums2.end() );
         sort(nums1.begin(), nums1.end());
 
         if(nums1.size() % 2 == 0) 
