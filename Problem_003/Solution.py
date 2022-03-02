@@ -1,4 +1,4 @@
-# LeetCode Problem 3: Longest Substring Without Repeating Characters
+# LeetCode Problem 003: Longest Substring Without Repeating Characters
 # Given a string s, find the length of the longest substring without 
 #    repeating characters.
 

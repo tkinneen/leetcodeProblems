@@ -2,13 +2,19 @@ from Solution import Solution
 
 def main():
 
-    testInputs = [2,7,11,15]
-    targetValue = 9
+    #targetValue = 9
+    #testInput = [2,7,11,15]
+    
+    #targetValue = 6
+    #testInput = [3,2,4]
+
+    targetValue = 6
+    testInput = [3,3]
 
     # instantiate Solution class
     s = Solution() 
 
-    answer = s.twoSum(testInputs, targetValue)
+    answer = s.twoSum(testInput, targetValue)
 
     print(answer)
 
