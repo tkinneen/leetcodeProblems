@@ -2,14 +2,16 @@ from Solution import Solution
 
 def main():
 
-    # testInputs 
-    n = 22    
-    # n = 3    
+    # Test input - Number of stairs to calculate  
+    # n = 3
+    # n = 4   
     # n = 5
+    n = 8
 
-    # instantiate Solution class
+    # Instantiate Solution class
     s = Solution() 
 
+    # Retrieve solution
     answer = s.climbStairs(n)
 
     print(answer)
