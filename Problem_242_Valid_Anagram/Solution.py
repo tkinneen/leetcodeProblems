@@ -11,14 +11,14 @@ class Solution:
         if len(s) != len(t):
             return False
         
-        # We will pack each string into a hash map, then compare
+        # We will pack each string into its own hash map, then compare
         sHash, tHash = {}, {}
 
+        # Since we already established strings are the same length, we can pack both maps in one loop
         for i in s:
-            # The dictionary 'get' function allows us to initialize a value if it does not yet exist
+            # Each character acts as key, and each time that key appears its value count gets incremented 
+            # The dictionary 'get' function allows us to initialize a value and not crash if key does not yet exist
             sHash[i] = sHash.get(i, 0) + 1
-            
-        for i in t:
             tHash[i] = tHash.get(i, 0) + 1
         
         # Check the hashes against each other to know if the letter counts are identical
