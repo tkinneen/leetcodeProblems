@@ -19,6 +19,9 @@ class Solution:
 
         # Start at 1, then check every number up to n
         for current in range(1, n + 1):
+
+            # Use the modulous operator to check the divisibility
+            #   of the current number in the loop
             if current % 3 == 0 and current % 5 == 0:
                 result.append("FizzBuzz")
             elif current % 3 == 0:
@@ -26,6 +29,8 @@ class Solution:
             elif current % 5 == 0:
                 result.append("Buzz")
             else:
+                # If none of the conditions are met, append current integer
+                #    value to the result array as a string
                 result.append(str(current))
 
         return result.append(result)
