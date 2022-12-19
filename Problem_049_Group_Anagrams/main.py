@@ -3,7 +3,7 @@ from Solution import Solution
 def main():
 
     testStrings = ["eat","tea","tan","ate","nat","bat"]
-    # [["bat"],["nat","tan"],["ate","eat","tea"]]
+    # Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
 
     #testStrings = [""]
     # Output: [[""]]
