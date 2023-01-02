@@ -6,11 +6,11 @@ def main():
     testInput = [6, 7, 0, 1, 2, 4, 5]  # Output: 4
     target = 0
 
-    testInput = [0, 1, 2, 4, 5, 6, 7]  # Output: 4
-    target = 0
+    #testInput = [0, 1, 2, 4, 5, 6, 7]  # Output: 4
+    #target = 0
 
-    testInput = [4, 5, 6, 7, 0, 1, 2]  # Output: 4
-    target = 0
+    #testInput = [4, 5, 6, 7, 0, 1, 2]  # Output: 4
+    #target = 0
 
     # testInput = [4, 5, 6, 7, 0, 1, 2]  # Output: -1
     #target = 3

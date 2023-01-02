@@ -18,37 +18,41 @@ from typing import List
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
 
-        # This is a binary search solution with a time complexity of O(log n)
+        # Modified binary search solution: time complexity of O(log n)
         # When a problem specifies a log n solution, you should be thinking binary search
 
-        # Set position pointers at opposite ends of the input array
+        # Set position pointers at far ends of the input array
         l, r = 0, len(nums) - 1
+        
+        print(f"actual length of input array: {len(nums)}")
         print(f"length of input array: {len(nums) - 1}")
 
         # Loop until the left and right pointers meet
         while l <= r:
 
-            # Calculate pointer at the midpoint of the array
-            # // is divison floor, so mid in arrays with an even number of elements
-            #    will err on the left side
+            # Calculate mid ptr each loop iteration
+            # // is divison floor; evenly-numbered arrays will be left of mid
             mid = (l + r) // 2
-            print(f"mid: {mid}")
 
-            # If the target matches the number at the mid pointer, we've found our
-            #    answer, so return
+            # When target matches the mid ptr num, we have the answer
             if target == nums[mid]:
                 return mid
+            
+            # [4, 5, 6, 7, 0, 1, 2]
+            # [7, 0, 1, 2, 4, 5, 6]
+            # [1, 2, 4, 5, 6, 7, 0]
 
-            # Left sorted portion
+            # Left portion - we know this is in sorted order, the pivot is elsewhere
             if nums[l] <= nums[mid]:
-                #
+                
+                # Check if the target exists in the bounds of this left portion. If so, 
+                #    shift the right ptr to left of mid. If not, shift left ptr to right
+                #    of mid. Essentially discard the portion of the list with no target 
                 if target > nums[mid] or target < nums[l]:
                     l = mid + 1
-                # target > nums[mid] or target < nums[l]
                 else:
                     r = mid - 1
-
-            # Right sorted porition
+            # Right portion - perform similar check as above
             else:
                 if target < nums[mid] or target > nums[r]:
                     r = mid - 1
