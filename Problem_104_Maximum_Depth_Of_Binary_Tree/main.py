@@ -25,8 +25,8 @@ def main():
     s = Solution()
 
     # Run the solution
-    answer = s.maxDepth(testTree)
-    print("Max depth of the binary tree: " + str(answer))
+    result = s.maxDepth(testTree)
+    print(f"Max depth of the binary tree: {result}")
 
     
 if __name__ == "__main__":
