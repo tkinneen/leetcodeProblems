@@ -11,12 +11,13 @@ def main():
     ]
 
     # Output: 3
-    """testGrid = [
+    testGrid = [
         ["1","1","0","0","0"],
         ["1","1","0","0","0"],
         ["0","0","1","0","0"],
         ["0","0","0","1","1"]
-    ]"""
+    ]
+    
 
     # Instantiate Solution class
     s = Solution()
