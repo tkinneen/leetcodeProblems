@@ -8,15 +8,15 @@ class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         
         # Create a dictionary to collect already-see number for fast lookup
-        numsAlreadySeen = {}
+        seenNums = set()
         
-        # Loop through all numbers and check dict, return immediately when dupe is found
-        for currentNum in nums:
-            if currentNum in numsAlreadySeen:
+        # Loop through each num in input array and check set for duplicates. Return if dupe is found
+        for curNum in nums:
+            if curNum in seenNums:
                 return True
             else:
-                # If current number is not found, add it to the dictionary
-                numsAlreadySeen[currentNum] = 0
+                # If current number has not been seen, add it to the set
+                seenNums.add(curNum)
         
-        # Return false if there are no inputs in the test array
+        # No duplicated have been found
         return False
