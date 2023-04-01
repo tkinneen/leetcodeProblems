@@ -17,7 +17,6 @@ def main():
         ["0","0","1","0","0"],
         ["0","0","0","1","1"]
     ]
-    
 
     # Instantiate Solution class
     s = Solution()
