@@ -62,5 +62,6 @@ class Solution:
                 # If the mid element is less than the right element, it COULD be the pivot, 
                 #    so we shift the right ptr to mid's current position
                 rightPtr = midpoint
-            
+
+        # Both pointers are at the same position at the end, so return the array position at either
         return nums[leftPtr]
