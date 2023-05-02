@@ -17,41 +17,33 @@ from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-
         # Modified binary search solution: time complexity of O(log n)
         # When a problem specifies a log n solution, you should be thinking binary search
 
         # Set position pointers at far ends of the input array
         l, r = 0, len(nums) - 1
-        
-        print(f"actual length of input array: {len(nums)}")
-        print(f"length of input array: {len(nums) - 1}")
 
         # Loop until the left and right pointers meet
+        # Needs to be less than or equal because we have to handle the condition of a single element
         while l <= r:
-
             # Calculate mid ptr each loop iteration
             # // is divison floor; evenly-numbered arrays will be left of mid
             mid = (l + r) // 2
 
-            # When target matches the mid ptr num, we have the answer
+            # When target matches the number at mid pointer, we have the answer
             if target == nums[mid]:
                 return mid
-            
-            # [4, 5, 6, 7, 0, 1, 2]
-            # [7, 0, 1, 2, 4, 5, 6]
-            # [1, 2, 4, 5, 6, 7, 0]
 
             # Left portion - we know this is in sorted order, the pivot is elsewhere
             if nums[l] <= nums[mid]:
-                
-                # Check if the target exists in the bounds of this left portion. If so, 
+                # Check if the target exists in the bounds of this left portion. If so,
                 #    shift the right ptr to left of mid. If not, shift left ptr to right
-                #    of mid. Essentially discard the portion of the list with no target 
+                #    of mid. Essentially discard the portion of the list with no target
                 if target > nums[mid] or target < nums[l]:
                     l = mid + 1
                 else:
                     r = mid - 1
+
             # Right portion - perform similar check as above
             else:
                 if target < nums[mid] or target > nums[r]:
