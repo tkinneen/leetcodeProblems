@@ -4,6 +4,9 @@ from Solution import Solution
 def main():
     a, b = 1, 2  # Output: 3
     # a, b = 2, 3 # Output: 5
+    a, b = 0, 1
+    #a, b = 1, 1
+    #a, b = -1, 1
 
     # Instantiate Solution class
     s = Solution()
