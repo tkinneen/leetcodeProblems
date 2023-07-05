@@ -1,12 +1,13 @@
 from Solution import Solution
 
-
 def main():
     a, b = 1, 2  # Output: 3
-    # a, b = 2, 3 # Output: 5
-    a, b = 0, 1
-    #a, b = 1, 1
-    #a, b = -1, 1
+    #a, b = 2, 3 # Output: 5
+    #a, b = 0, 1 # Output: 1
+    #a, b = 1, 1 # Output: 2
+    #a, b = -1, 1 # Output: 0
+    #a, b = -2, 1 # Output: -1
+    #a, b = -10, 1 # Output: -9
 
     # Instantiate Solution class
     s = Solution()
