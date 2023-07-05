@@ -56,12 +56,7 @@ class Solution:
 
                     # Perform same island/visited check as the main function, but this time add range checks becuase
                     #    as the new directions could land outside the grid bounds
-                    if (
-                        r in range(rows)
-                        and c in range(cols)
-                        and grid[r][c] == "1"
-                        and (r, c) not in visited
-                    ):
+                    if (r in range(rows) and c in range(cols) and grid[r][c] == "1" and (r, c) not in visited):
                         # If all above checks are valid append to the q and run the next iteration
                         q.append((r, c))
                         visited.add((r, c))

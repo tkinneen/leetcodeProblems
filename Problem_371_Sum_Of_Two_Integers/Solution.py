@@ -12,6 +12,8 @@ class Solution:
         #    large environment-dependent collection of 1 bits, we can 
         #    use a bitmask and the & operator to "chop off" bits past the
         #    size specified in the problem description.
+        # This happens because in Python, integer precision is limited only 
+        #    to the constraints of your hardware
         shortenBitsMask = 0xFFFFFFFF # Hex representation of 32 bits
 
         # Loop until there is no longer a carry
