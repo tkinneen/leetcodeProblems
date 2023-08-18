@@ -2,49 +2,34 @@ from Solution import ListNode, Solution
 
 def main():
     
-    testLists = []
-
     # Create first node and set the head ptr
-    listOneHead = listOne = ListNode(1)
-    listOne.next = ListNode(4)
-    listOne = listOne.next
-    listOne.next = ListNode(5)
-    listOne = listOne.next
+    testListHead = testList = ListNode(1)
+    testList.next = ListNode(2)
+    testList = testList.next
+    testList.next = ListNode(3)
+    testList = testList.next
+    testList.next = ListNode(4)
+    testList = testList.next
+    testList.next = ListNode(5)
 
-    listTwoHead = listTwo = ListNode(1)
-    listTwo.next = ListNode(3)
-    listTwo = listTwo.next
-    listTwo.next = ListNode(4)
-    listTwo = listTwo.next
+    nodeToRemove = 2
 
-    listThreeHead = listThree = ListNode(2)
-    listThree.next = ListNode(6)
+    #testListHead = testList = ListNode(1)
+    #nodeToRemove = 1
 
-    listFourHead = listFour = ListNode(11)
-    listFour.next = ListNode(13)
-    listFour = listFour.next
-    listFour.next = ListNode(14)
-    listFour = listFour.next
+    #testListHead = testList = ListNode(1)
+    #testList.next = ListNode(2)
+    #nodeToRemove = 1
 
-    listFiveHead = listFive = ListNode(21)
-    listFive.next = ListNode(23)
-    listFive = listFive.next
-    listFive.next = ListNode(24)
-    listFive = listFive.next
-
-    testLists.append(listOneHead)
-    testLists.append(listTwoHead)
-    testLists.append(listThreeHead)
-    testLists.append(listFourHead)
-    testLists.append(listFiveHead)
+    testList = testListHead
 
     # Instantiate Solution class
     s = Solution()
 
     # Run the solution
-    answer = s.mergeKLists(testLists)
+    answer = s.removeNthFromEnd(testList, nodeToRemove)
 
-    print("Merged linked list values: ")
+    print(f"List with {nodeToRemove}th node removed:")
     
     while answer:
         print(answer.val)
