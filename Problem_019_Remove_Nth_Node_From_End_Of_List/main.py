@@ -11,7 +11,6 @@ def main():
     testList.next = ListNode(4)
     testList = testList.next
     testList.next = ListNode(5)
-
     nodeToRemove = 2
 
     #testListHead = testList = ListNode(1)
@@ -29,7 +28,7 @@ def main():
     # Run the solution
     answer = s.removeNthFromEnd(testList, nodeToRemove)
 
-    print(f"List with {nodeToRemove}th node removed:")
+    print(f"Updated list with the node {nodeToRemove} from the end removed:")
     
     while answer:
         print(answer.val)
