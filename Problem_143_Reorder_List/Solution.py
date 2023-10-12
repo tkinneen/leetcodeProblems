@@ -15,7 +15,7 @@ class ListNode:
         self.val = val
         self.next = next
 
-from typing import List, Optional
+from typing import Optional
 
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
@@ -23,31 +23,28 @@ class Solution:
         # Time complexity: O(n) [amortized from O(2n) as we traverse the list twice]
         # Memory complexity: O(1) [we're using a fixed number of pointers and modifying passed-in list]
 
-        # Set a fast and slow pointer at the first and second positions of the list
+        # Set a fast and slow pointer at the 1st and 2nd positions of the list
         slowPtr, fastPtr = head, head.next
 
         print(f"initial slowPtr.val: {slowPtr.val}")
         print(f"initial fastPtr.val: {fastPtr.val}")
 
         # Loop through the entire list, stepping the slow ptr by 1 and the 
-        #    fast ptr by 2 each iteration
-        # Odd-length lists the slow ptr will end at the midpoint, and even-length
-        #    lists it will err left of center
-        # Note: fast ptr ends on the last node of even-length lista
+        #    fast ptr by 2 each iteration. On loop-end slowPtr is the midpoint
         while fastPtr and fastPtr.next:
             slowPtr = slowPtr.next
             fastPtr = fastPtr.next.next
             
-        # 
+        # Start of the 2nd list (which we will now reverse)
         second = slowPtr.next
         
-        # previous will 
+        # prev ptr will help us reverse "next" pointers (initialize to Null)
         previous = None
 
-        # This will chop off the second half of the original list
+        # End 1st list after midpoint (essentilly chop original list in 2ff)
         slowPtr.next = None
 
-        # Traverse the second half of the list, reversing next ptrs
+        # Traverse the second half of the list, reversing pointers
         while second:
             
             # Preserve link to the original next node
@@ -62,28 +59,23 @@ class Solution:
             # Current becomes the next node in the original order
             second = temp
         
-        print(f"previous after reversal: {previous.val}")
-
-        # These are the two lists we must merge to get our desired re-roder. secondList is the second half of the input list, reversed 
-        # odd-length lists will always have one more node than secondList)
+        # Create pointers to our two lists we must merge
         firstList, secondList = head, previous
         
-        # Finally, merge secondList (which is the second half of the original list, reversed) into 
-        #    firstList. This gives us the new order requited by the solution
-        # Loop while secondList is not null, as it will always be shorter
+        # Merge the two lists in place, yeilding the requested reorder
         while secondList:
 
-            # Preserve the next pointer in both lists, as we will be breaking them
+            # Preserve the next pointer of both lists, as we will be re-arranging them
             temp1, temp2 = firstList.next, secondList.next
             
-            # Take the current node of secondList and insert it into the next position of firstList
+            # firstList's next pointer aims at current node in secondList 
             firstList.next = secondList
 
-            # , and makes it a contiguous list
+            # secondList's next pointer aims at what was originally firstList.next
+            # Each loop we're essentially inserting a node from secondList between two nodes in firstList
             secondList.next = temp1
 
-            # Make the current node of both lists the next 
+            # Progress to the next node of both lists in their original order 
             firstList, secondList = temp1, temp2
-        
-        # 
-        return None
+
+            # No need to return a value as we modified the linked list in-place

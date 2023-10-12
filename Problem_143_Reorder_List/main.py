@@ -3,12 +3,12 @@ from Solution import ListNode, Solution
 def main():
 
     # Build up the test list - Output: [1,4,2,3]
-    testListHead = testList = ListNode(1)
+    """testListHead = testList = ListNode(1)
     testList.next = ListNode(2)
     testList = testList.next
     testList.next = ListNode(3)
     testList = testList.next
-    testList.next = ListNode(4)
+    testList.next = ListNode(4)"""
 
     # Build up the test list - Output: [1,5,2,4,3]
     testListHead = testList = ListNode(1)
