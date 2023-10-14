@@ -16,10 +16,9 @@ from typing import List
 
 
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> int:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
         # As we know the array is sorted, we can use a 2 pointer solution
-        leftPtr = 0
-        rightPtr = len(nums) - 1
+        leftPtr, rightPtr = 0, len(nums) - 1
 
         # Loop until the two pointers meet
         while leftPtr < rightPtr:
