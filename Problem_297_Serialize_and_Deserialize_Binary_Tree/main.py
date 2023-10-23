@@ -2,11 +2,7 @@ from Solution import TreeNode, Codec
 
 def main():
 
-    # Example 1
-    #root = [1, 2, 3, "Null", "Null", 4, 5]
-    root = "1,2,3,Null,Null,4,5"
-
-    # Build test tree - Example 2
+    # Build test tree - Example 1
     treeNodeHead = testTree = TreeNode(1)
     testTree.left = TreeNode(2)
     testTree.right = TreeNode(3)
@@ -18,10 +14,7 @@ def main():
     root = treeNodeHead
 
     #Example 2:
-    #root = []
-
-    # Instantiate Solution class
-    #s = Solution()
+    #root = None
 
     # Your Codec object will be instantiated and called as such:
     ser = Codec()
