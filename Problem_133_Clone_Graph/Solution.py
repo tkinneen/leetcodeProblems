@@ -31,30 +31,50 @@ class Node:
         self.val = val
         self.neighbors = neighbors if neighbors is not None else []
 
-
-from typing import Optional, List
-from collections import deque
-
-
-# Definition for a Node.
-class Node:
-    def __init__(self, val=0, neighbors=None):
-        self.val = val
-        self.neighbors = neighbors if neighbors is not None else []
-
-
 class Solution:
     def cloneGraph(self, node: "Node") -> "Node":
+
+        # Time complexity: O(v + e) where v is the number of verticies and e is 
+        #    the number of edges. DFS traverses each node once, and each edge 
+        #    of each node is explored
+        # Space complexity: O(v)
+
+        # Hash map to link original nodes their clones. Original node acts as the
+        #    key to access the clone
         originalToNew = {}
 
+        # This depth first search function performs several operations:
+        #    1. If a node is passed in that already exists in our hash map, use our map to return the existing clone
+        #    2. If the node is not in the hash map, clone it by instantiating a new Node object with its value
+        #    3. After cloning it, loop through the neighbors array of the original node and append each node it contains to the clone's neighbors array
         def dfs(node):
+
+            print(f"top of dfs - node.val: {node.val}")
+
+            # If an original is passed in and has already been seen, return the
+            #    already-created clone
+            # "in" operator checks ONLY keys
             if node in originalToNew:
+                print("returning an already-added node...")
                 return originalToNew[node]
 
+            # Node has NOT been seen, so create a clone
+            print("adding a new node node...")
+
             copy = Node(node.val)
+
+            # Use the original as the key in our hash map to link it to the clone
             originalToNew[node] = copy
+
+            # Iterate over all neighbor edges of the original node
             for curNeighbor in node.neighbors:
+
+                # For each neighbor, run the dfs clone function on the node, and append what is returned to the copy's neighbors array
+                #    New nodes will be added to the hash, and then their neighbor arrays will be populated before finishing the original node
                 copy.neighbors.append(dfs(curNeighbor))
+
+            # Return the full copy that was just created (new node with fully-populated neighbors)
             return copy
-        
+
+        # The return requires this protection if no nodes are passed in for the test case
         return dfs(node) if node else None
