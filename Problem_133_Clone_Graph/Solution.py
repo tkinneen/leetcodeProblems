@@ -1,19 +1,11 @@
 # LeetCode Problem 133: Clone Graph
 #
 # Given a reference of a node in a connected undirected graph.
-#
 # Return a deep copy (clone) of the graph.
-#
 # Each node in the graph contains a value (int) and a list (List[Node]) of its
 #    neighbors.
 #
-# class Node {
-#    public int val;
-#    public List<Node> neighbors;
-# }
-#
 # Test case format:
-#
 # For simplicity, each node's value is the same as the node's index (1-indexed).
 #    For example, the first node with val == 1, the second node with val == 2,
 #    and so on. The graph is represented in the test case using an adjacency list.
@@ -23,8 +15,7 @@
 #
 # The given node will always be the first node with val = 1. You must return the
 #   copy of the given node as a reference to the cloned graph.
-
-
+#
 # Definition for a Node.
 class Node:
     def __init__(self, val=0, neighbors=None):
@@ -44,23 +35,27 @@ class Solution:
         originalToNew = {}
 
         # This depth first search function performs several operations:
-        #    1. If a node is passed in that already exists in our hash map, use our map to return the existing clone
-        #    2. If the node is not in the hash map, clone it by instantiating a new Node object with its value
-        #    3. After cloning it, loop through the neighbors array of the original node and append each node it contains to the clone's neighbors array
+        #    1. If a node is passed in that already exists in our hash map, use 
+        #       our map to return the existing clone
+        #    2. If the node is not in the hash map, clone it by instantiating a 
+        #       new Node object with its value
+        #    3. After cloning it, loop through the neighbors array of the original 
+        #       node and append each node it contains to the clone's neighbors array
         def dfs(node):
 
-            print(f"top of dfs - node.val: {node.val}")
+            # How this flows: Recursion starts and a node is cloned. Then the neighbors 
+            #    of the original node are added to the clone through the dfs function.
+            #    If a neighbor node hasn't been seen yet, it will clone THAT node before
+            #    it finishes the original's neighbors, recursing potentially deeply before
+            #    the original neighbor array is complete
 
             # If an original is passed in and has already been seen, return the
             #    already-created clone
             # "in" operator checks ONLY keys
             if node in originalToNew:
-                print("returning an already-added node...")
                 return originalToNew[node]
 
             # Node has NOT been seen, so create a clone
-            print("adding a new node node...")
-
             copy = Node(node.val)
 
             # Use the original as the key in our hash map to link it to the clone
