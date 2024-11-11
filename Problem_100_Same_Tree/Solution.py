@@ -21,7 +21,9 @@ class TreeNode:
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 
-        # Time complexity is O(n) since each node is visirted exactly once
+        # Time: O(n) since each node is visited exactly once
+        # Space: O(h), where h is the height of the tree; skewed trees will be O(n), 
+        #    balanced trees are O(log n)
 
         # If both nodes are null, recursive check is valid so just return True
         if not p and not q:
