@@ -18,6 +18,9 @@ from typing import Optional
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
 
+        # Time: O(n)
+        # Space: O(h) or height of tree...n in worst case log n for balanced
+
         # Create helper function, called recursively to check that each node's value is 
         #    within acceptable bounds
         def checkValidity(node, leftBound, rightBound):
