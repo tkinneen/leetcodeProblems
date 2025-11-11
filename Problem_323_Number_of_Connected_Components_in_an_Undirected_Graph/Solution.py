@@ -11,6 +11,8 @@ from typing import List
 class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
 
+        # This algorithm is called a "Disjoint Set Data Structure" or "DSU - Disjoint Set Union"
+
         # Time: O(N + E), where N is the number of nodes and E is the number of edges
         # Space: O(V) == O(2V) (two arrays each the size of the number of nodes)
         # Technically the time complexity is O((N + E) * α(N)), where a(N) is a inverse Ackermann function that grows insanely slowly 
