@@ -24,6 +24,8 @@ class Solution:
         previous, current = 1, 2
 
         # Start directly after our base cases, working sequentially up to n, 
+        #    caching only the last two steps and using them to calculate the
+        #    solution for the current step
         for _ in range(2, n):
             # This works because when python handles multi-assignment, it caches
             #    the values in a tuple so they don't get overwritten
