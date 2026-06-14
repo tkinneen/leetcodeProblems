@@ -45,7 +45,8 @@ class Solution:
                 ):
                     # If a room is infinity it hasn't been processed yet. Use the step count
                     #    of the adjacent node that preceeded it to calculate its count. Due
-                    #    to the nature of bfs, 
+                    #    to the nature of bfs, when a new room is reached it is the shortest
+                    #    possible distance to nearest gate
                     rooms[new_row][new_col] = rooms[row][col] + 1
                     q.append((new_row, new_col))
         
