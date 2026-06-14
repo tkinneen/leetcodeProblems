@@ -16,26 +16,28 @@ from collections import deque
 
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        
-        m, n = len(grid), len(grid[0])
-        rotten_q = deque()
-        fresh_count = 0
 
-        # Make a single pass through the entire grid, adding all rotten oranges to the
-        #    initial queue and also keeping count of all fresh fruit
+        # Time: O(m * n)
+        # Space: O(m * n)
+
+        m, n = len(grid), len(grid[0])
+        fresh_count = 0
+        rotten_q = deque()
+        minutes = 0
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        
+        # Make a full pass over the grid, counting fresh oranges and enqueueing
+        #    rotten ones in preparation for a bfs
         for row in range(m):
             for col in range(n):
                 if grid[row][col] == 2:
                     rotten_q.append((row, col))
                 elif grid[row][col] == 1:
                     fresh_count += 1
-
-        # Perform the breadth first search. Each "level" of the search, another minute passes
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        minutes = 0
-
-        # Continue for as long as rotten fruit remain in the q.
-        # If rotten oranges are still in the q but no fresh fruit remain, no need to proceed 
+        
+        # 
+        # If no fresh oranges remain while rotten oranges are still in the q there 
+        #    is no reason to proceed further
         while rotten_q and fresh_count > 0:
             for _ in range(len(rotten_q)):
                 row, col = rotten_q.popleft()
@@ -46,12 +48,16 @@ class Solution:
                         0 <= new_col < n and
                         grid[new_row][new_col] == 1
                     ):
-                        # If the current node is in range and contains a fresh orange, make it rotten,
-                        #    decrement the fresh count and add the newly-rotten orange to the q
+                        # Infect the current orange and decrement the "fresh" counter by 1
                         grid[new_row][new_col] = 2
                         fresh_count -= 1
+                        # Append the newly-rotten orange to the q
                         rotten_q.append((new_row, new_col))
             minutes += 1
         
-        # If fresh oranges remain they are not reachable, so return -1
-        return minutes if fresh_count == 0 else -1
+        # Fresh fruit remain; Total infection is impossible
+        if fresh_count:
+            return -1
+        
+        # Return the number of minutes before all oranges are infected
+        return minutes
